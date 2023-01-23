@@ -1,0 +1,16 @@
+{
+  "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "backend",
+          "commands": ["nvm use 18", "cd server", "pnpm start:dev"]
+        },
+        {
+          "name": "frontend",
+          "commands": ["nvm use 18", "cd app", "pnpm dev"]
+        }
+      ]
+    }
+  ]
+}
