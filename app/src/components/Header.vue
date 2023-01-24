@@ -76,6 +76,7 @@
     padding: 8px;
     z-index: 10;
     box-shadow: 0 0 47px #dedede;
+    background-color: #fff;
   }
 }
 .header__navbar {
