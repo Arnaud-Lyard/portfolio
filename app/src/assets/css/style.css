@@ -21,3 +21,11 @@ body {
   font-display: auto;
   src: url("../fonts/TitilliumWeb-Bold.ttf");
 }
+
+@font-face {
+  font-family: "Titillium Web Regular";
+  font-weight: 300;
+  font-style: normal;
+  font-display: auto;
+  src: url("../fonts/TitilliumWeb-Regular.ttf");
+}
