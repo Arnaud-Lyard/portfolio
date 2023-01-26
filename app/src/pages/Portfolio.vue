@@ -96,12 +96,22 @@
   margin: 0;
   font-family: "Titillium Web Black", sans-serif;
 }
+@media (max-width: 450px) {
+  .portfolio__title-section__title {
+    font-size: 35px;
+  }
+}
 .portfolio__title-section__subtitle {
   color: #2d82b5;
   font-size: 56px;
   font-weight: 900;
   text-transform: uppercase;
   font-family: "Titillium Web Black", sans-serif;
+}
+@media (max-width: 450px) {
+  .portfolio__title-section__subtitle {
+    font-size: 35px;
+  }
 }
 .portfolio-container-gallery {
   display: grid;
@@ -153,6 +163,16 @@
   .portfolio-container-gallery__image---hover {
     width: 375px;
     height: 250px;
+  }
+}
+@media (max-width: 450px) {
+  .portfolio-container-gallery__image {
+    width: 300px;
+    height: 200px;
+  }
+  .portfolio-container-gallery__image---hover {
+    width: 300px;
+    height: 200px;
   }
 }
 .portfolio-container-gallery__image---hover:hover {

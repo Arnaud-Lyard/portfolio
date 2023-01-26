@@ -28,7 +28,7 @@
         <a
           class="contact-container-information__link"
           href="mailto:contactArobaseprochainweb.com"
-          >contactArobaseprochainweb.com</a
+          >arnaud.lyardArobasegmail.com</a
         >
       </p>
       <p class="contact-container-information__contact">
@@ -106,7 +106,9 @@
   display: flex;
   justify-content: center;
   padding: 80px 0;
+  text-align: center;
 }
+
 .contact-title-section__title {
   color: #666;
   font-size: 56px;
@@ -115,6 +117,11 @@
   margin: 0;
   font-family: "Titillium Web Black", sans-serif;
 }
+@media (max-width: 450px) {
+  .contact-title-section__title {
+    font-size: 35px;
+  }
+}
 .contact-title-section__subtitle {
   color: #2d82b5;
   font-size: 56px;
@@ -122,11 +129,17 @@
   text-transform: uppercase;
   font-family: "Titillium Web Black", sans-serif;
 }
+@media (max-width: 450px) {
+  .contact-title-section__subtitle {
+    font-size: 35px;
+  }
+}
 .contact-container {
   display: grid;
   grid-template-columns: 33% 67%;
   max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 80px;
 }
 @media (max-width: 1380px) {
   .contact-container {

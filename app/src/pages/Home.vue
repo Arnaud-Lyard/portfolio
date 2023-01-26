@@ -56,6 +56,11 @@ main {
     justify-content: center;
   }
 }
+@media (max-width: 650px) {
+  .home-container {
+    padding-bottom: 80px;
+  }
+}
 .home-container__background {
   position: fixed;
   width: 33%;
