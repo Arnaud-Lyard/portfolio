@@ -13,9 +13,23 @@ import {
   faEnvelope,
   faBriefcase,
   faArrowRight,
+  faPhoneSquare,
+  faEnvelopeOpen,
+  faMap,
 } from "@fortawesome/free-solid-svg-icons";
-
-library.add(faCode, faHome, faUser, faEnvelope, faBriefcase, faArrowRight);
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+library.add(
+  faCode,
+  faHome,
+  faUser,
+  faEnvelope,
+  faBriefcase,
+  faArrowRight,
+  faPhoneSquare,
+  faEnvelopeOpen,
+  faMap,
+  faLinkedin
+);
 
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)

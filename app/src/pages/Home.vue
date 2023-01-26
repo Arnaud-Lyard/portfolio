@@ -197,7 +197,7 @@ main {
   transition: all 0.3s ease-out;
   background-color: #2d82b5;
 }
-.home-container__details-button:hover:before {
+.home-container__details-button:hover::before {
   transform: translateX(0);
 }
 .home-container__details-button:hover .home-container__details-button-text {
