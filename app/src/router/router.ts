@@ -4,6 +4,7 @@ import Home from "../pages/Home.vue";
 import Contact from "../pages/Contact.vue";
 import Portfolio from "../pages/Portfolio.vue";
 import Technologies from "../pages/Technologies.vue";
+import Login from "../pages/Login.vue";
 
 const routes = [
   { path: "/", component: Home },
@@ -11,6 +12,7 @@ const routes = [
   { path: "/contact", component: Contact },
   { path: "/portfolio", component: Portfolio },
   { path: "/technologies", component: Technologies },
+  { path: "/login", component: Login },
 ];
 
 const router = createRouter({
