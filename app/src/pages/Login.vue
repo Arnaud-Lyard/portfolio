@@ -41,20 +41,21 @@
         /></span>
       </button>
     </form>
-    <p>Double count is {{ store.doubleCount }}</p>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue";
 import { useLoginMutation } from "../graphql/generated/schema";
-import { useCounterStore } from "../store";
-const store = useCounterStore();
+import { useRouter } from "vue-router";
+import { useUserStore } from "../store";
+const userStore = useUserStore();
+const router = useRouter();
 
-const password = ref("");
-const email = ref("");
-const errorPassword = ref("");
-const errorEmail = ref("");
+const password = ref<string>("");
+const email = ref<string>("");
+const errorPassword = ref<string>("");
+const errorEmail = ref<string>("");
 
 const validateEmail = () => {
   errorEmail.value = email.value === "" ? "The Input field is required" : "";
@@ -70,9 +71,8 @@ const validatePassword = () => {
     password.value === "" ? "The Input field is required" : "";
 };
 
-const submitForm = () => {
+const submitForm = async () => {
   if (!errorEmail.value && !errorPassword.value) {
-    console.log("email", email.value);
     const { mutate: sendLogin } = useLoginMutation({
       variables: {
         data: {
@@ -81,7 +81,9 @@ const submitForm = () => {
         },
       },
     });
-    sendLogin();
+    await sendLogin();
+    await userStore.userProfile();
+    await router.push("/");
   }
 };
 </script>

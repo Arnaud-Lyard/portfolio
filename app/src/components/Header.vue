@@ -51,7 +51,7 @@
           </button>
         </li>
       </router-link>
-      <router-link to="/login">
+      <router-link v-if="!userStore.getUserEmail" to="/login">
         <li class="header__list-item">
           <button href="#" class="header__button">
             <i class="header__list-icon">
@@ -61,11 +61,24 @@
           </button>
         </li>
       </router-link>
+      <router-link v-else to="/dashboard">
+        <li class="header__list-item">
+          <button href="#" class="header__button">
+            <i class="header__list-icon">
+              <font-awesome-icon icon="fa-solid fa-lock" />
+            </i>
+            <h2 class="header__list-title">Admin</h2>
+          </button>
+        </li>
+      </router-link>
     </ul>
   </header>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useUserStore } from "../store";
+const userStore = useUserStore();
+</script>
 
 <style scoped>
 .header {

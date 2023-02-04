@@ -1,18 +1,39 @@
 import { defineStore } from "pinia";
+import {
+  useProfileLazyQuery,
+  useProfileQuery,
+} from "../graphql/generated/schema";
 
-export const useCounterStore = defineStore("counter", {
-  state: () => ({
-    count: 0,
-  }),
+interface State {
+  email: string;
+  id: number | null;
+}
+
+export const useUserStore = defineStore("user", {
+  state: (): State => {
+    return {
+      email: "",
+      id: null,
+    };
+  },
   getters: {
-    // automatically infers the return type as a number
-    doubleCount(state) {
-      return state.count * 2;
+    getUserEmail(state) {
+      return state.email;
     },
-    // the return type **must** be explicitly set
-    doublePlusOne(): number {
-      // autocompletion and typings for the whole store ✨
-      return this.doubleCount + 1;
+  },
+  actions: {
+    async userProfile() {
+      try {
+        const { result, onResult } = useProfileQuery();
+        onResult(() => {
+          if (result.value) {
+            this.email = result.value.profile.email;
+            this.id = result.value.profile.id;
+          }
+        });
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 });

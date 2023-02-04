@@ -1,4 +1,4 @@
-import { createApp, provide, h } from "vue";
+import { createApp, provide, h, onMounted } from "vue";
 import "./assets/css/style.css";
 import App from "./App.vue";
 import router from "./router/router";
@@ -22,12 +22,15 @@ import {
   faEnvelopeOpen,
   faMap,
   faRightToBracket,
+  faLock,
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import {
   DefaultApolloClient,
   provideApolloClient,
 } from "@vue/apollo-composable";
+import { useUserStore } from "./store/";
+
 library.add(
   faCode,
   faHome,
@@ -39,12 +42,14 @@ library.add(
   faEnvelopeOpen,
   faMap,
   faLinkedin,
-  faRightToBracket
+  faRightToBracket,
+  faLock
 );
 const pinia = createPinia();
 
 const httpLink = createHttpLink({
   uri: import.meta.env.VITE_GRAPHQL_API_URL,
+  credentials: "include",
 });
 
 const cache = new InMemoryCache();
@@ -52,6 +57,14 @@ const cache = new InMemoryCache();
 const apolloClient = new ApolloClient({
   link: httpLink,
   cache,
+  defaultOptions: {
+    query: {
+      errorPolicy: "ignore",
+    },
+    mutate: {
+      errorPolicy: "ignore",
+    },
+  },
 });
 
 provideApolloClient(apolloClient);
@@ -69,3 +82,6 @@ app
   .use(router)
   .use(pinia)
   .mount("#app");
+
+const userStore = useUserStore();
+userStore.userProfile();
