@@ -18,6 +18,9 @@ interface ENV {
   DATABASE_USER: string | undefined;
   DATABASE_PASSWORD: string | undefined;
   DATABASE_NAME: string | undefined;
+  ADMIN_EMAIL_ADRESS: string | undefined;
+  AUTH_DOMAIN_USERNAME: string | undefined;
+  AUTH_DOMAIN_PASSWORD: string | undefined;
 }
 
 interface Config {
@@ -30,6 +33,9 @@ interface Config {
   DATABASE_USER: string;
   DATABASE_PASSWORD: string;
   DATABASE_NAME: string;
+  ADMIN_EMAIL_ADRESS: string;
+  AUTH_DOMAIN_USERNAME: string;
+  AUTH_DOMAIN_PASSWORD: string;
 }
 
 // Loading process.env as ENV interface
@@ -47,6 +53,9 @@ const getConfig = (): ENV => {
     DATABASE_USER: process.env.DATABASE_USER,
     DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
     DATABASE_NAME: process.env.DATABASE_NAME,
+    ADMIN_EMAIL_ADRESS: process.env.ADMIN_EMAIL_ADRESS,
+    AUTH_DOMAIN_USERNAME: process.env.AUTH_DOMAIN_USERNAME,
+    AUTH_DOMAIN_PASSWORD: process.env.AUTH_DOMAIN_PASSWORD,
   };
 };
 
