@@ -7,5 +7,6 @@ export class ContactResolver {
   @Mutation(() => Boolean)
   async contactAdmin(@Arg("data") data: ContactInput) {
     await sendMail(data).catch(console.error);
+    return true;
   }
 }

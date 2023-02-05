@@ -16,11 +16,24 @@ export type Scalars = {
   Float: number;
 };
 
+export type ContactInput = {
+  email: Scalars['String'];
+  message: Scalars['String'];
+  name: Scalars['String'];
+  subject: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
+  contactAdmin: Scalars['Boolean'];
   createUser: User;
   login: Scalars['String'];
   logout: Scalars['String'];
+};
+
+
+export type MutationContactAdminArgs = {
+  data: ContactInput;
 };
 
 
@@ -68,6 +81,13 @@ export type ProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ProfileQuery = { __typename?: 'Query', profile: { __typename?: 'User', id: number, email: string, role: string } };
+
+export type ContactAdminMutationVariables = Exact<{
+  data: ContactInput;
+}>;
+
+
+export type ContactAdminMutation = { __typename?: 'Mutation', contactAdmin: boolean };
 
 
 export const CreateUserDocument = gql`
@@ -157,3 +177,30 @@ export function useProfileLazyQuery(options: VueApolloComposable.UseQueryOptions
   return VueApolloComposable.useLazyQuery<ProfileQuery, ProfileQueryVariables>(ProfileDocument, {}, options);
 }
 export type ProfileQueryCompositionFunctionResult = VueApolloComposable.UseQueryReturn<ProfileQuery, ProfileQueryVariables>;
+export const ContactAdminDocument = gql`
+    mutation ContactAdmin($data: ContactInput!) {
+  contactAdmin(data: $data)
+}
+    `;
+
+/**
+ * __useContactAdminMutation__
+ *
+ * To run a mutation, you first call `useContactAdminMutation` within a Vue component and pass it any options that fit your needs.
+ * When your component renders, `useContactAdminMutation` returns an object that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - Several other properties: https://v4.apollo.vuejs.org/api/use-mutation.html#return
+ *
+ * @param options that will be passed into the mutation, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/mutation.html#options;
+ *
+ * @example
+ * const { mutate, loading, error, onDone } = useContactAdminMutation({
+ *   variables: {
+ *     data: // value for 'data'
+ *   },
+ * });
+ */
+export function useContactAdminMutation(options: VueApolloComposable.UseMutationOptions<ContactAdminMutation, ContactAdminMutationVariables> | ReactiveFunction<VueApolloComposable.UseMutationOptions<ContactAdminMutation, ContactAdminMutationVariables>> = {}) {
+  return VueApolloComposable.useMutation<ContactAdminMutation, ContactAdminMutationVariables>(ContactAdminDocument, options);
+}
+export type ContactAdminMutationCompositionFunctionResult = VueApolloComposable.UseMutationReturn<ContactAdminMutation, ContactAdminMutationVariables>;
