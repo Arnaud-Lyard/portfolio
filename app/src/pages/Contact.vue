@@ -6,12 +6,10 @@
   </div>
   <div class="contact-container">
     <div class="contact-container-information">
-      <h2 class="contact-container-information__title">Contact me !</h2>
+      <h2 class="contact-container-information__main-title">Contact me !</h2>
       <p class="contact-container-information__description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi aut
-        illo obcaecati earum. Impedit repellendus reiciendis excepturi amet
-        tempore totam, ut, facere doloribus earum illum quo sapiente
-        voluptatibus accusantium temporibus?
+        Feel free to get in touch with me. I am always open to discussing new
+        projects, creative ideas or opportunities.
       </p>
       <p class="contact-container-information__contact">
         <i class="contact-container-information__icon">
@@ -28,7 +26,7 @@
         <a
           class="contact-container-information__link"
           href="mailto:contactArobaseprochainweb.com"
-          >arnaud.lyardArobasegmail.com</a
+          >contactArobaseprochainweb.com</a
         >
       </p>
       <p class="contact-container-information__contact">
@@ -46,6 +44,15 @@
             target="_blank"
             ><i class="contact-container-information__social-network-icon">
               <font-awesome-icon icon="fa-brands fa-linkedin" /> </i
+          ></a>
+        </li>
+        <li class="contact-container-information__social-network-item">
+          <a
+            class="contact-container-information__social-network-link"
+            href="https://github.com/Arnaud-Lyard"
+            target="_blank"
+            ><i class="contact-container-information__social-network-icon">
+              <font-awesome-icon icon="fa-brands fa-github" /> </i
           ></a>
         </li>
       </ul>
@@ -280,6 +287,18 @@ const submitForm = async () => {
   left: 0;
   top: 7px;
   font-size: 39px;
+}
+.contact-container-information__main-title {
+  display: block;
+  text-transform: uppercase;
+  opacity: 0.8;
+  padding-bottom: 0;
+  line-height: 25px;
+  font-family: "sans-serif";
+  font-size: 26px;
+  color: #666;
+  padding-bottom: 20px;
+  font-family: "Titillium Web Regular", sans-serif;
 }
 .contact-container-information__title {
   display: block;

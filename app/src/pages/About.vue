@@ -85,10 +85,8 @@
                 >
               </h5>
               <p class="about-container-experience-history__description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Dolore, atque? Itaque, ipsum officia! Vero corporis deleniti
-                ipsum nulla, eligendi facilis quaerat officiis sunt. Odio sunt
-                sed nesciunt? Quis, expedita fugit!
+                I work in the start up to set up an application to offer a
+                discount solution between customers and suppliers.
               </p>
             </li>
             <li class="about-container-experience-history__list-item">
@@ -108,10 +106,8 @@
                 >
               </h5>
               <p class="about-container-experience-history__description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Dolore, atque? Itaque, ipsum officia! Vero corporis deleniti
-                ipsum nulla, eligendi facilis quaerat officiis sunt. Odio sunt
-                sed nesciunt? Quis, expedita fugit!
+                I worked to solve anomalies on an application in the form of
+                tickets.
               </p>
             </li>
             <li class="about-container-experience-history__list-item">
@@ -131,10 +127,7 @@
                 >
               </h5>
               <p class="about-container-experience-history__description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Dolore, atque? Itaque, ipsum officia! Vero corporis deleniti
-                ipsum nulla, eligendi facilis quaerat officiis sunt. Odio sunt
-                sed nesciunt? Quis, expedita fugit!
+                I worked in a logistics company and I used software such as SAP.
               </p>
             </li>
           </ul>
@@ -158,10 +151,8 @@
                 >
               </h5>
               <p class="about-container-experience-history__description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Dolore, atque? Itaque, ipsum officia! Vero corporis deleniti
-                ipsum nulla, eligendi facilis quaerat officiis sunt. Odio sunt
-                sed nesciunt? Quis, expedita fugit!
+                I created my micro business to be able to work alongside my
+                work.
               </p>
             </li>
             <li class="about-container-experience-history__list-item">
@@ -181,10 +172,8 @@
                 >
               </h5>
               <p class="about-container-experience-history__description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Dolore, atque? Itaque, ipsum officia! Vero corporis deleniti
-                ipsum nulla, eligendi facilis quaerat officiis sunt. Odio sunt
-                sed nesciunt? Quis, expedita fugit!
+                I passed my aws certification to be able to improve my knowledge
+                in IT outsourcing.
               </p>
             </li>
             <li class="about-container-experience-history__list-item">
@@ -204,10 +193,8 @@
                 >
               </h5>
               <p class="about-container-experience-history__description">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Dolore, atque? Itaque, ipsum officia! Vero corporis deleniti
-                ipsum nulla, eligendi facilis quaerat officiis sunt. Odio sunt
-                sed nesciunt? Quis, expedita fugit!
+                I worked as a sales representative to offer industrial
+                components.
               </p>
             </li>
           </ul>
