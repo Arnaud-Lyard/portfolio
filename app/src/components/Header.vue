@@ -67,7 +67,7 @@
             <i class="header__list-icon">
               <font-awesome-icon icon="fa-solid fa-lock" />
             </i>
-            <h2 class="header__list-title">Admin</h2>
+            <h2 class="header__list-title">Dashboard</h2>
           </button>
         </li>
       </router-link>
@@ -98,7 +98,6 @@ const userStore = useUserStore();
     transform: none;
     width: 100%;
     display: block;
-    padding: 8px;
     z-index: 10;
     box-shadow: 0 0 47px #dedede;
     background-color: #fff;
@@ -112,7 +111,7 @@ const userStore = useUserStore();
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 45px;
+    height: 55px;
   }
 }
 .header__list-item {
