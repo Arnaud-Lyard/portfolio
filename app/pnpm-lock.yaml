@@ -18,6 +18,7 @@ specifiers:
   typescript: ^4.9.4
   vite: ^4.0.0
   vue: ^3.2.45
+  vue-recaptcha: ^2.0.3
   vue-router: ^4.1.6
   vue-tsc: ^1.0.11
 
@@ -36,6 +37,7 @@ dependencies:
   graphql-tag: 2.12.6_graphql@16.6.0
   pinia: 2.0.30_prq2uz4lho2pwp6irk4cfkrxwu
   vue: 3.2.45
+  vue-recaptcha: 2.0.3_vue@3.2.45
   vue-router: 4.1.6_vue@3.2.45
 
 devDependencies:
@@ -3962,6 +3964,19 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.45
+    dev: false
+
+  /vue-recaptcha/2.0.3_vue@3.2.45:
+    resolution: {integrity: sha512-Rz0kLIETUgmOrp7CxFvaFE65DkhKdWu4pteWOTt2i+yTajTHPqtyOW6DqTg0BvALWTm+WUvWVV7k5XXFijQnBw==}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-beta.1
+      vue: ^2.0.0 || ^3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.45
+      vue-demi: 0.13.11_vue@3.2.45
     dev: false
 
   /vue-router/4.1.6_vue@3.2.45:

@@ -3,11 +3,11 @@
     {
       "splitTerminals": [
         {
-          "name": "backend",
+          "name": "server",
           "commands": ["nvm use 18", "cd server", "pnpm start"]
         },
         {
-          "name": "frontend",
+          "name": "app",
           "commands": ["nvm use 18", "cd app", "pnpm dev"]
         }
       ]

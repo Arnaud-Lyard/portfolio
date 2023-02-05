@@ -123,6 +123,13 @@
             ><font-awesome-icon icon="fa-solid fa-arrow-right"
           /></span>
         </button>
+        <div v-if="validForm">
+          <VueRecaptcha
+            :sitekey="siteKey"
+            :load-recaptcha-script="true"
+            @verify="onVerify"
+          ></VueRecaptcha>
+        </div>
       </form>
       <div v-if="mailSend" class="success">Thanks for your message !</div>
     </div>
@@ -130,6 +137,7 @@
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";
+import { VueRecaptcha } from "vue-recaptcha";
 import { useContactAdminMutation } from "../graphql/generated/schema";
 
 const name = ref<string>("");
@@ -141,6 +149,9 @@ const errorEmail = ref<string>("");
 const errorSubject = ref<string>("");
 const errorMessage = ref<string>("");
 const mailSend = ref<boolean>(false);
+const validForm = ref<boolean>(false);
+
+const siteKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 const validateEmail = () => {
   errorEmail.value = email.value === "" ? "The Input field is required" : "";
@@ -165,6 +176,16 @@ const validateSubject = () => {
 };
 
 const submitForm = async () => {
+  if (
+    !errorEmail.value &&
+    !errorEmail.value &&
+    !errorSubject.value &&
+    !errorMessage.value
+  )
+    validForm.value = true;
+};
+
+const onVerify = async () => {
   if (
     !errorEmail.value &&
     !errorEmail.value &&

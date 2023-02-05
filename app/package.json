@@ -24,6 +24,7 @@
     "graphql-tag": "^2.12.6",
     "pinia": "^2.0.30",
     "vue": "^3.2.45",
+    "vue-recaptcha": "^2.0.3",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
