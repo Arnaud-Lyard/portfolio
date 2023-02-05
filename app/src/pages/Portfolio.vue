@@ -81,7 +81,7 @@
     </div>
   </div>
 </template>
-<script lang="ts"></script>
+<script lang="ts" setup></script>
 <style scoped>
 .portfolio__title-section {
   display: flex;

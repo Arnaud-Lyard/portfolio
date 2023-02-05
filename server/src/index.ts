@@ -45,11 +45,7 @@ const start = async (): Promise<void> => {
   const schema = await buildSchema({
     resolvers: [UserResolver],
     authChecker: async ({ context }: { context: ContextType }, roles) => {
-      const tokenInHeaders = context.req.headers.authorization?.split(" ")[1];
-      const tokenInCookie = context.req.cookies?.token;
-      const token = tokenInHeaders ?? tokenInCookie;
-
-      console.log({ tokenInCookie, tokenInHeaders });
+      const token = context.req.cookies?.token;
 
       try {
         let decoded;

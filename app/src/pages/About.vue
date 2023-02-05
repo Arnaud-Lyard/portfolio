@@ -216,7 +216,7 @@
     </div>
   </section>
 </template>
-<script lang="ts"></script>
+<script lang="ts" setup></script>
 <style scoped>
 .about__title-section {
   display: flex;

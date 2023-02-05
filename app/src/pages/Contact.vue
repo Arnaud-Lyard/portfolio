@@ -42,7 +42,7 @@
         <li class="contact-container-information__social-network-item">
           <a
             class="contact-container-information__social-network-link"
-            href="#"
+            href="https://www.linkedin.com/in/arnaud-lyard/"
             target="_blank"
             ><i class="contact-container-information__social-network-icon">
               <font-awesome-icon icon="fa-brands fa-linkedin" /> </i
@@ -91,7 +91,7 @@
           ></textarea>
         </div>
         <button class="contact-container-form__button">
-          <span class="contact-container-form__button-text">More about me</span>
+          <span class="contact-container-form__button-text">Send message</span>
           <span class="contact-container-form__button-icon"
             ><font-awesome-icon icon="fa-solid fa-arrow-right"
           /></span>
@@ -100,7 +100,7 @@
     </div>
   </div>
 </template>
-<script lang="ts"></script>
+<script lang="ts" setup></script>
 <style scoped>
 .contact-title-section {
   display: flex;

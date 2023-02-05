@@ -22,15 +22,16 @@
             ducimus unde quo atque minima magni repellat dolor magnam saepe
             impedit sint!
           </p>
-
-          <button class="home-container__details-button">
-            <span class="home-container__details-button-text"
-              >More about me</span
-            >
-            <span class="home-container__details-button-icon"
-              ><font-awesome-icon icon="fa-solid fa-arrow-right"
-            /></span>
-          </button>
+          <router-link to="/about">
+            <button class="home-container__details-button">
+              <span class="home-container__details-button-text"
+                >More about me</span
+              >
+              <span class="home-container__details-button-icon"
+                ><font-awesome-icon icon="fa-solid fa-arrow-right"
+              /></span>
+            </button>
+          </router-link>
         </div>
       </div>
     </div>
@@ -58,7 +59,7 @@ main {
 }
 @media (max-width: 650px) {
   .home-container {
-    padding-bottom: 80px;
+    padding-bottom: 120px;
   }
 }
 .home-container__background {
