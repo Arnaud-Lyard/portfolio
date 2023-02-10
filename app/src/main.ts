@@ -24,7 +24,7 @@ import {
   faRightToBracket,
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import {
   DefaultApolloClient,
   provideApolloClient,
@@ -43,7 +43,8 @@ library.add(
   faMap,
   faLinkedin,
   faRightToBracket,
-  faLock
+  faLock,
+  faGithub
 );
 const pinia = createPinia();
 

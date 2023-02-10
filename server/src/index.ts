@@ -14,6 +14,7 @@ import datasource from "./database";
 import { UserResolver } from "./resolver/UserResolver";
 import User from "./entity/User";
 import config from "./config/config";
+import { ContactResolver } from "./resolver/ContactResolver";
 
 export interface ContextType {
   req: express.Request;
@@ -43,7 +44,7 @@ const start = async (): Promise<void> => {
   app.use(cookieParser());
 
   const schema = await buildSchema({
-    resolvers: [UserResolver],
+    resolvers: [UserResolver, ContactResolver],
     authChecker: async ({ context }: { context: ContextType }, roles) => {
       const token = context.req.cookies?.token;
 

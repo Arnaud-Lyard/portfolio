@@ -1,0 +1,3 @@
+mutation ContactAdmin($data: ContactInput!) {
+  contactAdmin(data: $data)
+}

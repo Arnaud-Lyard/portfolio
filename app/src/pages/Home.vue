@@ -17,10 +17,8 @@
             >
           </h1>
           <p class="home-container__details-description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
-            error eos quas possimus adipisci quisquam rerum, voluptatem delectus
-            ducimus unde quo atque minima magni repellat dolor magnam saepe
-            impedit sint!
+            I'm a french based full stack developper, I'm passionate about web
+            development and I'm always looking for new challenges.
           </p>
           <router-link to="/about">
             <button class="home-container__details-button">

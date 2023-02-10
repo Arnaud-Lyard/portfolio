@@ -6,12 +6,10 @@
   </div>
   <div class="contact-container">
     <div class="contact-container-information">
-      <h2 class="contact-container-information__title">Contact me !</h2>
+      <h2 class="contact-container-information__main-title">Contact me !</h2>
       <p class="contact-container-information__description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi aut
-        illo obcaecati earum. Impedit repellendus reiciendis excepturi amet
-        tempore totam, ut, facere doloribus earum illum quo sapiente
-        voluptatibus accusantium temporibus?
+        Feel free to get in touch with me. I am always open to discussing new
+        projects, creative ideas or opportunities.
       </p>
       <p class="contact-container-information__contact">
         <i class="contact-container-information__icon">
@@ -28,7 +26,7 @@
         <a
           class="contact-container-information__link"
           href="mailto:contactArobaseprochainweb.com"
-          >arnaud.lyardArobasegmail.com</a
+          >contactArobaseprochainweb.com</a
         >
       </p>
       <p class="contact-container-information__contact">
@@ -48,59 +46,168 @@
               <font-awesome-icon icon="fa-brands fa-linkedin" /> </i
           ></a>
         </li>
+        <li class="contact-container-information__social-network-item">
+          <a
+            class="contact-container-information__social-network-link"
+            href="https://github.com/Arnaud-Lyard"
+            target="_blank"
+            ><i class="contact-container-information__social-network-icon">
+              <font-awesome-icon icon="fa-brands fa-github" /> </i
+          ></a>
+        </li>
       </ul>
     </div>
     <div class="contact-container-form">
-      <form action="" class="contact-container-form__form">
+      <form
+        @submit.prevent="submitForm()"
+        action="submit"
+        class="contact-container-form__form"
+      >
         <div class="contact-container-form__form-content">
           <div class="contact-container-form__form-section">
             <input
+              v-model.trim="name"
+              @keyup="validateName()"
+              @blue="validateName()"
               class="contact-container-form__form-input"
               type="text"
               name="name"
               placeholder="YOUR NAME"
               required
             />
+            <div class="error">{{ errorName }}</div>
           </div>
           <div class="contact-container-form__form-section">
             <input
+              v-model.trim="email"
+              @keyup="validateEmail()"
+              @blue="validateEmail()"
               class="contact-container-form__form-input"
               type="email"
               name="email"
               placeholder="YOUR EMAIL"
               required
             />
+            <div class="error">{{ errorEmail }}</div>
           </div>
         </div>
         <div class="contact-container-form__form-content-subject">
           <input
+            v-model.trim="subject"
+            @keyup="validateSubject()"
+            @blue="validateSubject()"
             class="contact-container-form__form-input"
             type="text"
             name="subject"
             placeholder="YOUR SUBJECT"
             required
           />
+          <div class="error">{{ errorSubject }}</div>
         </div>
         <div class="contact-container-form__form-content-subject">
           <textarea
+            v-model.trim="message"
+            @keyup="validateMessage()"
+            @blue="validateMessage()"
             class="contact-container-form__form-textarea"
             type="text"
             name="subject"
             placeholder="YOUR MESSAGE"
             required
           ></textarea>
+          <div class="error">{{ errorMessage }}</div>
         </div>
-        <button class="contact-container-form__button">
+        <button type="submit" class="contact-container-form__button">
           <span class="contact-container-form__button-text">Send message</span>
           <span class="contact-container-form__button-icon"
             ><font-awesome-icon icon="fa-solid fa-arrow-right"
           /></span>
         </button>
+        <div v-if="validForm">
+          <VueRecaptcha
+            :sitekey="siteKey"
+            :load-recaptcha-script="true"
+            @verify="onVerify"
+          ></VueRecaptcha>
+        </div>
       </form>
+      <div v-if="mailSend" class="success">Thanks for your message !</div>
     </div>
   </div>
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref } from "vue";
+import { VueRecaptcha } from "vue-recaptcha";
+import { useContactAdminMutation } from "../graphql/generated/schema";
+
+const name = ref<string>("");
+const email = ref<string>("");
+const subject = ref<string>("");
+const message = ref<string>("");
+const errorName = ref<string>("");
+const errorEmail = ref<string>("");
+const errorSubject = ref<string>("");
+const errorMessage = ref<string>("");
+const mailSend = ref<boolean>(false);
+const validForm = ref<boolean>(false);
+
+const siteKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+
+const validateEmail = () => {
+  errorEmail.value = email.value === "" ? "The Input field is required" : "";
+  let re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  errorEmail.value = !re.test(email.value)
+    ? `The input ${email.value} is not a valid  address`
+    : "";
+};
+
+const validateName = () => {
+  errorName.value = name.value === "" ? "The Input field is required" : "";
+};
+const validateMessage = () => {
+  errorMessage.value =
+    message.value === "" ? "The Input field is required" : "";
+};
+
+const validateSubject = () => {
+  errorSubject.value =
+    subject.value === "" ? "The Input field is required" : "";
+};
+
+const submitForm = async () => {
+  if (
+    !errorEmail.value &&
+    !errorEmail.value &&
+    !errorSubject.value &&
+    !errorMessage.value
+  )
+    validForm.value = true;
+};
+
+const onVerify = async () => {
+  if (
+    !errorEmail.value &&
+    !errorEmail.value &&
+    !errorSubject.value &&
+    !errorMessage.value
+  ) {
+    const { mutate: sendContact } = useContactAdminMutation({
+      variables: {
+        data: {
+          name: name.value,
+          email: email.value,
+          subject: subject.value,
+          message: message.value,
+        },
+      },
+    });
+
+    await sendContact();
+    mailSend.value = true;
+  }
+};
+</script>
 <style scoped>
 .contact-title-section {
   display: flex;
@@ -201,6 +308,18 @@
   left: 0;
   top: 7px;
   font-size: 39px;
+}
+.contact-container-information__main-title {
+  display: block;
+  text-transform: uppercase;
+  opacity: 0.8;
+  padding-bottom: 0;
+  line-height: 25px;
+  font-family: "sans-serif";
+  font-size: 26px;
+  color: #666;
+  padding-bottom: 20px;
+  font-family: "Titillium Web Regular", sans-serif;
 }
 .contact-container-information__title {
   display: block;
@@ -371,5 +490,15 @@
   color: #fff;
   border-radius: 50%;
   background-color: #2d82b5;
+}
+.error {
+  padding-left: 20px;
+  color: red;
+  font-size: 12px;
+}
+.success {
+  padding: 20px;
+  color: green;
+  font-size: 12px;
 }
 </style>
