@@ -1,5 +1,5 @@
 import { createApp, provide, h, onMounted } from "vue";
-import "./assets/css/style.css";
+import "./assets/css/main.css";
 import App from "./App.vue";
 import router from "./router/router";
 import {
