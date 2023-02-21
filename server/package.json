@@ -5,7 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev --poll src/index.ts"
+    "start": "ts-node-dev --poll src/index.ts",
+    "build": "tsc",
+    "prod": "npm run build && node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -34,6 +36,7 @@
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.9",
     "@types/node": "^18.11.18",
+    "@types/validator": "^13.7.12",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",

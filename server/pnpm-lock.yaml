@@ -6,6 +6,7 @@ specifiers:
   '@types/express': ^4.17.14
   '@types/jsonwebtoken': ^8.5.9
   '@types/node': ^18.11.18
+  '@types/validator': ^13.7.12
   '@typescript-eslint/eslint-plugin': ^5.36.1
   apollo-server-core: ^3.10.3
   apollo-server-errors: ^3.3.1
@@ -56,6 +57,7 @@ dependencies:
 devDependencies:
   '@types/jsonwebtoken': 8.5.9
   '@types/node': 18.11.18
+  '@types/validator': 13.7.12
   '@typescript-eslint/eslint-plugin': 5.50.0_zkdaqh7it7uc4cvz2haft7rc6u
   eslint: 8.33.0
   eslint-config-prettier: 8.6.0_eslint@8.33.0
@@ -587,6 +589,10 @@ packages:
 
   /@types/strip-json-comments/0.0.30:
     resolution: {integrity: sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==}
+    dev: true
+
+  /@types/validator/13.7.12:
+    resolution: {integrity: sha512-YVtyAPqpefU+Mm/qqnOANW6IkqKpCSrarcyV269C8MA8Ux0dbkEuQwM/4CjL47kVEM2LgBef/ETfkH+c6+moFA==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.50.0_zkdaqh7it7uc4cvz2haft7rc6u:

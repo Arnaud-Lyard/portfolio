@@ -15,6 +15,8 @@ import { UserResolver } from "./resolver/UserResolver";
 import User from "./entity/User";
 import config from "./config/config";
 import { ContactResolver } from "./resolver/ContactResolver";
+import path from "path";
+import "reflect-metadata";
 
 export interface ContextType {
   req: express.Request;
@@ -42,6 +44,7 @@ const start = async (): Promise<void> => {
   );
 
   app.use(cookieParser());
+  app.use(express.static(path.resolve(__dirname, "./client/build")));
 
   const schema = await buildSchema({
     resolvers: [UserResolver, ContactResolver],
