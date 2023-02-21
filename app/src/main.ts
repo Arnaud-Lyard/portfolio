@@ -1,5 +1,5 @@
 import { createApp, provide, h, onMounted } from "vue";
-import "./assets/css/style.css";
+import "./assets/css/main.css";
 import App from "./App.vue";
 import router from "./router/router";
 import {
@@ -23,6 +23,8 @@ import {
   faMap,
   faRightToBracket,
   faLock,
+  faFileLines,
+  faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import {
@@ -44,7 +46,9 @@ library.add(
   faLinkedin,
   faRightToBracket,
   faLock,
-  faGithub
+  faGithub,
+  faFileLines,
+  faUpRightFromSquare
 );
 const pinia = createPinia();
 
