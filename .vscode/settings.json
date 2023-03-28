@@ -7,8 +7,8 @@
           "commands": ["nvm use 18", "cd server", "pnpm start"]
         },
         {
-          "name": "app",
-          "commands": ["nvm use 18", "cd app", "pnpm dev"]
+          "name": "client",
+          "commands": ["nvm use 18", "cd client", "pnpm dev"]
         }
       ]
     }
