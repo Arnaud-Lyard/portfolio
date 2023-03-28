@@ -31,7 +31,7 @@ import {
   DefaultApolloClient,
   provideApolloClient,
 } from "@vue/apollo-composable";
-import { useUserStore } from "./store/";
+import { useUserStore } from "./store";
 
 library.add(
   faCode,
