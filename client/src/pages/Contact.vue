@@ -23,11 +23,8 @@
           <font-awesome-icon icon="fa-solid fa-envelope-open" />
         </i>
         <span class="contact-container-information__title">Email adress</span>
-        <a
-          class="contact-container-information__link"
-          href="mailto:contactArobaseprochainweb.com"
-          >contactArobaseprochainweb.com</a
-        >
+        <a class="contact-container-information__link"
+          href="mailto:contactArobaseprochainweb.com">contactArobaseprochainweb.com</a>
       </p>
       <p class="contact-container-information__contact">
         <i class="contact-container-information__icon-phone">
@@ -38,98 +35,46 @@
       </p>
       <ul class="contact-container-information__social-network">
         <li class="contact-container-information__social-network-item">
-          <a
-            class="contact-container-information__social-network-link"
-            href="https://www.linkedin.com/in/arnaud-lyard/"
-            target="_blank"
-            ><i class="contact-container-information__social-network-icon">
-              <font-awesome-icon icon="fa-brands fa-linkedin" /> </i
-          ></a>
+          <a class="contact-container-information__social-network-link" href="https://www.linkedin.com/in/arnaud-lyard/"
+            target="_blank"><i class="contact-container-information__social-network-icon">
+              <font-awesome-icon icon="fa-brands fa-linkedin" /> </i></a>
         </li>
         <li class="contact-container-information__social-network-item">
-          <a
-            class="contact-container-information__social-network-link"
-            href="https://github.com/Arnaud-Lyard"
-            target="_blank"
-            ><i class="contact-container-information__social-network-icon">
-              <font-awesome-icon icon="fa-brands fa-github" /> </i
-          ></a>
+          <a class="contact-container-information__social-network-link" href="https://github.com/Arnaud-Lyard"
+            target="_blank"><i class="contact-container-information__social-network-icon">
+              <font-awesome-icon icon="fa-brands fa-github" /> </i></a>
         </li>
       </ul>
     </div>
     <div class="contact-container-form">
-      <form
-        @submit.prevent="submitForm()"
-        action="submit"
-        class="contact-container-form__form"
-      >
+      <form @submit.prevent="submitForm()" action="submit" class="contact-container-form__form">
         <div class="contact-container-form__form-content">
           <div class="contact-container-form__form-section">
-            <input
-              v-model.trim="name"
-              @keyup="validateName()"
-              @blue="validateName()"
-              class="contact-container-form__form-input"
-              type="text"
-              name="name"
-              placeholder="YOUR NAME"
-              required
-            />
+            <input v-model.trim="name" @keyup="validateName()" @blue="validateName()"
+              class="contact-container-form__form-input" type="text" name="name" placeholder="YOUR NAME" required />
             <div class="error">{{ errorName }}</div>
           </div>
           <div class="contact-container-form__form-section">
-            <input
-              v-model.trim="email"
-              @keyup="validateEmail()"
-              @blue="validateEmail()"
-              class="contact-container-form__form-input"
-              type="email"
-              name="email"
-              placeholder="YOUR EMAIL"
-              required
-            />
+            <input v-model.trim="email" @keyup="validateEmail()" @blue="validateEmail()"
+              class="contact-container-form__form-input" type="email" name="email" placeholder="YOUR EMAIL" required />
             <div class="error">{{ errorEmail }}</div>
           </div>
         </div>
         <div class="contact-container-form__form-content-subject">
-          <input
-            v-model.trim="subject"
-            @keyup="validateSubject()"
-            @blue="validateSubject()"
-            class="contact-container-form__form-input"
-            type="text"
-            name="subject"
-            placeholder="YOUR SUBJECT"
-            required
-          />
+          <input v-model.trim="subject" @keyup="validateSubject()" @blue="validateSubject()"
+            class="contact-container-form__form-input" type="text" name="subject" placeholder="YOUR SUBJECT" required />
           <div class="error">{{ errorSubject }}</div>
         </div>
         <div class="contact-container-form__form-content-subject">
-          <textarea
-            v-model.trim="message"
-            @keyup="validateMessage()"
-            @blue="validateMessage()"
-            class="contact-container-form__form-textarea"
-            type="text"
-            name="subject"
-            placeholder="YOUR MESSAGE"
-            required
-          ></textarea>
+          <textarea v-model.trim="message" @keyup="validateMessage()" @blue="validateMessage()"
+            class="contact-container-form__form-textarea" type="text" name="subject" placeholder="YOUR MESSAGE"
+            required></textarea>
           <div class="error">{{ errorMessage }}</div>
         </div>
         <button type="submit" class="contact-container-form__button">
           <span class="contact-container-form__button-text">Send message</span>
-          <span class="contact-container-form__button-icon"
-            ><font-awesome-icon icon="fa-solid fa-arrow-right"
-          /></span>
+          <span class="contact-container-form__button-icon"><font-awesome-icon icon="fa-solid fa-arrow-right" /></span>
         </button>
-        <div v-if="validForm">
-          <VueRecaptcha
-            :sitekey="siteKey"
-            :load-recaptcha-script="true"
-            @verify="onVerify"
-          ></VueRecaptcha>
-        </div>
       </form>
       <div v-if="mailSend" class="success">Thanks for your message !</div>
     </div>
@@ -137,7 +82,6 @@
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";
-import { VueRecaptcha } from "vue-recaptcha";
 import { useContactAdminMutation } from "../graphql/generated/schema";
 
 const name = ref<string>("");
@@ -149,9 +93,7 @@ const errorEmail = ref<string>("");
 const errorSubject = ref<string>("");
 const errorMessage = ref<string>("");
 const mailSend = ref<boolean>(false);
-const validForm = ref<boolean>(false);
 
-const siteKey: string = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 const validateEmail = () => {
   errorEmail.value = email.value === "" ? "The Input field is required" : "";
@@ -175,6 +117,17 @@ const validateSubject = () => {
     subject.value === "" ? "The Input field is required" : "";
 };
 
+const { mutate: sendContact } = useContactAdminMutation({
+  variables: {
+    data: {
+      name: name.value,
+      email: email.value,
+      subject: subject.value,
+      message: message.value,
+    },
+  },
+});
+
 const submitForm = async () => {
   if (
     !errorEmail.value &&
@@ -182,29 +135,7 @@ const submitForm = async () => {
     !errorSubject.value &&
     !errorMessage.value
   )
-    validForm.value = true;
-};
-
-const onVerify = async () => {
-  if (
-    !errorEmail.value &&
-    !errorEmail.value &&
-    !errorSubject.value &&
-    !errorMessage.value
-  ) {
-    const { mutate: sendContact } = useContactAdminMutation({
-      variables: {
-        data: {
-          name: name.value,
-          email: email.value,
-          subject: subject.value,
-          message: message.value,
-        },
-      },
-    });
-
     await sendContact();
-    mailSend.value = true;
-  }
 };
+
 </script>
