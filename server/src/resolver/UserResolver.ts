@@ -1,4 +1,3 @@
-import { ApolloError } from "apollo-server-errors";
 import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import datasource from "../database";
 import User, {
@@ -19,7 +18,7 @@ export class UserResolver {
       .getRepository(User)
       .findOne({ where: { email: data.email } });
 
-    if (exisitingUser !== null) throw new ApolloError("EMAIL_ALREADY_EXISTS");
+    if (exisitingUser !== null) throw new Error("EMAIL_ALREADY_EXISTS");
 
     const hashedPassword = await hashPassword(data.password);
     return await datasource
@@ -41,7 +40,7 @@ export class UserResolver {
       typeof user.hashedPassword !== "string" ||
       !(await verifyPassword(password, user.hashedPassword))
     )
-      throw new ApolloError("invalid credentials");
+      throw new Error("invalid credentials");
 
     const token = jwt.sign({ userId: user.id }, config.JWT_PRIVATE_KEY);
 

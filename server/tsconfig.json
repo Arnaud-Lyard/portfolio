@@ -11,7 +11,6 @@
     "strict": true,
     "sourceMap": true,
     "target": "ESNext",
-    "types": ["node"],
     "outDir": "dist",
     "typeRoots": ["./src/config/global.d.ts", "./node_modules/@types"]
   },
