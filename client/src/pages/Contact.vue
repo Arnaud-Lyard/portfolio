@@ -24,14 +24,14 @@
         </i>
         <span class="contact-container-information__title">Email adress</span>
         <a class="contact-container-information__link"
-          href="mailto:contactArobaseprochainweb.com">contactArobaseprochainweb.com</a>
+          href="mailto:arnaud.lyardarobasegmail.com">arnaud.lyardarobasegmail.com</a>
       </p>
       <p class="contact-container-information__contact">
         <i class="contact-container-information__icon-phone">
           <font-awesome-icon icon="fa-solid fa-phone-square" />
         </i>
         <span class="contact-container-information__title">Phone number</span>
-        +3306 87 28 27 18
+        +33 06 87 28 27 18
       </p>
       <ul class="contact-container-information__social-network">
         <li class="contact-container-information__social-network-item">
@@ -117,16 +117,7 @@ const validateSubject = () => {
     subject.value === "" ? "The Input field is required" : "";
 };
 
-const { mutate: sendContact } = useContactAdminMutation({
-  variables: {
-    data: {
-      name: name.value,
-      email: email.value,
-      subject: subject.value,
-      message: message.value,
-    },
-  },
-});
+
 
 const submitForm = async () => {
   if (
@@ -134,8 +125,20 @@ const submitForm = async () => {
     !errorEmail.value &&
     !errorSubject.value &&
     !errorMessage.value
-  )
+  ) {
+    const { mutate: sendContact } = useContactAdminMutation({
+      variables: {
+        data: {
+          name: name.value,
+          email: email.value,
+          subject: subject.value,
+          message: message.value,
+        },
+      },
+    });
     await sendContact();
+  }
+  mailSend.value = true
 };
 
 </script>

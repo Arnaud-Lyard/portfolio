@@ -28,6 +28,7 @@ async function start(): Promise<void> {
 
   const schema = await buildSchema({
     resolvers: [ContactResolver, UserResolver],
+    validate: false,
     authChecker: async ({ context }: { context: ContextType }, roles = []) => {
       const { req } = context;
       const tokenInAuthHeaders = req.headers.authorization?.split(" ")[1];
