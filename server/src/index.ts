@@ -3,18 +3,16 @@ import http from "http";
 import cors from "cors";
 import jwt from "jsonwebtoken";
 import express from "express";
-import cookieParser from "cookie-parser";
-import { ApolloServer } from "apollo-server-express";
-import {
-  ApolloServerPluginDrainHttpServer,
-  ApolloServerPluginLandingPageLocalDefault,
-} from "apollo-server-core";
+import { ApolloServer } from "@apollo/server";
+import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
+import { expressMiddleware } from "@apollo/server/express4";
 import { buildSchema } from "type-graphql";
-import datasource from "./database";
 import { UserResolver } from "./resolver/UserResolver";
 import User from "./entity/User";
 import config from "./config/config";
 import { ContactResolver } from "./resolver/ContactResolver";
+import cookie from "cookie";
+import database from "./database";
 
 export interface ContextType {
   req: express.Request;
@@ -23,74 +21,59 @@ export interface ContextType {
   jwtPayload?: jwt.JwtPayload;
 }
 
-const start = async (): Promise<void> => {
-  await datasource.initialize();
-
+async function start(): Promise<void> {
+  await database.initialize();
   const app = express();
   const httpServer = http.createServer(app);
-  const allowedOrigins = config.CORS_ALLOWED_ORIGINS.split(",");
-
-  app.use(
-    cors({
-      credentials: true,
-      origin: (origin, callback) => {
-        if (typeof origin === "undefined" || allowedOrigins.includes(origin))
-          return callback(null, true);
-        callback(new Error("Not allowed by CORS"));
-      },
-    })
-  );
-
-  app.use(cookieParser());
 
   const schema = await buildSchema({
-    resolvers: [UserResolver, ContactResolver],
-    authChecker: async ({ context }: { context: ContextType }, roles) => {
-      const token = context.req.cookies?.token;
+    resolvers: [ContactResolver, UserResolver],
+    validate: false,
+    authChecker: async ({ context }: { context: ContextType }, roles = []) => {
+      const { req } = context;
+      const tokenInAuthHeaders = req.headers.authorization?.split(" ")[1];
+      const tokenInCookie = cookie.parse(req.headers.cookie ?? "").token;
+      const token = tokenInAuthHeaders ?? tokenInCookie;
 
-      try {
-        let decoded;
-        if (typeof token !== "undefined")
-          decoded = jwt.verify(token, config.JWT_PRIVATE_KEY);
-        if (typeof decoded === "object") context.jwtPayload = decoded;
-      } catch (err) {}
+      if (typeof token !== "string") return false;
 
-      let user = null;
-      if (
-        context.jwtPayload !== null &&
-        typeof context.jwtPayload !== "undefined"
-      )
-        user = await datasource
-          .getRepository(User)
-          .findOne({ where: { id: context.jwtPayload.userId } });
+      const decoded = jwt.verify(token, config.JWT_PRIVATE_KEY);
+      if (typeof decoded !== "object") return false;
 
-      if (user === null) return false;
+      const id = decoded.userId;
+      const currentUser = await database.getRepository(User).findOneBy({ id });
+      if (currentUser === null) return false;
 
-      context.currentUser = user;
-      return roles.length === 0 || roles.includes(user.role);
+      context.currentUser = currentUser;
+      return roles.length === 0 || roles.includes(currentUser.role);
     },
   });
 
-  const server = new ApolloServer({
+  const server = new ApolloServer<ContextType>({
     schema,
     csrfPrevention: true,
     cache: "bounded",
-    plugins: [
-      ApolloServerPluginDrainHttpServer({ httpServer }),
-      ApolloServerPluginLandingPageLocalDefault({ embed: true }),
-    ],
-    context: ({ req, res }) => {
-      return { req, res };
-    },
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
 
   await server.start();
-  server.applyMiddleware({ app, cors: false, path: "/" });
-  httpServer.listen({ port: config.SERVER_PORT }, () =>
-    console.log(
-      `🚀 Server ready at ${config.SERVER_HOST}:${config.SERVER_PORT}${server.graphqlPath}`
-    )
-  );
-};
 
-void start();
+  app.use(
+    ["/", "/graphql"],
+    cors<cors.CorsRequest>({
+      origin: config.CORS_ALLOWED_ORIGINS.split(","),
+      credentials: true,
+    }),
+    express.json(),
+    expressMiddleware(server, {
+      context: async ({ req, res }) => ({ req, res }),
+    })
+  );
+
+  const port = config.SERVER_PORT ?? 4000;
+  httpServer.listen({ port }, () =>
+    console.log(`🚀 Server ready at http://localhost:${port}`)
+  );
+}
+
+start().catch(console.error);

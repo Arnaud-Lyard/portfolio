@@ -11,10 +11,10 @@
     "strict": true,
     "sourceMap": true,
     "target": "ESNext",
-    "types": ["node"],
     "outDir": "dist",
     "typeRoots": ["./src/config/global.d.ts", "./node_modules/@types"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "outDir": "./build"
 }

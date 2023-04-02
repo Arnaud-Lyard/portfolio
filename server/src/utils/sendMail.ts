@@ -406,12 +406,12 @@ export async function sendMail(data: IMailInput) {
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td class="content-block">
-                        <span class="apple-link">Prochainweb, 2 rue des Granges 01500 Ambutrix</span>
+                        <span class="apple-link">Arnaud Lyard, 2 rue des Granges 01500 Ambutrix</span>
                       </td>
                     </tr>
                     <tr>
                       <td class="content-block powered-by">
-                         <a href="https://www.prochainweb.com">Développement et conception d'application</a>.
+                         <a href="https://www.arnaudlyard.com">Développement et conception d'application</a>.
                       </td>
                     </tr>
                   </table>
