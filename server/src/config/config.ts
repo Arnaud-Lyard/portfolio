@@ -14,10 +14,11 @@ interface ENV {
   NODE_ENV: string | undefined;
   SERVER_PORT: number | undefined;
   SERVER_HOST: string | undefined;
-  DATABASE_HOST: string | undefined;
-  DATABASE_USER: string | undefined;
-  DATABASE_PASSWORD: string | undefined;
-  DATABASE_NAME: string | undefined;
+  DB_HOST: string | undefined;
+  DB_USER: string | undefined;
+  DB_PASSWORD: string | undefined;
+  DB_NAME: string | undefined;
+  DB_PORT: number | undefined;
   ADMIN_EMAIL_ADRESS: string | undefined;
   AUTH_DOMAIN_USERNAME: string | undefined;
   AUTH_DOMAIN_PASSWORD: string | undefined;
@@ -29,13 +30,14 @@ interface Config {
   NODE_ENV: "development" | "production";
   SERVER_PORT: number;
   SERVER_HOST: string;
-  DATABASE_HOST: string;
-  DATABASE_USER: string;
-  DATABASE_PASSWORD: string;
-  DATABASE_NAME: string;
-  ADMIN_EMAIL_ADRESS: string;
-  AUTH_DOMAIN_USERNAME: string;
-  AUTH_DOMAIN_PASSWORD: string;
+  DB_HOST?: string;
+  DB_USER?: string;
+  DB_PASSWORD?: string;
+  DB_NAME?: string;
+  DB_PORT?: number;
+  ADMIN_EMAIL_ADRESS?: string;
+  AUTH_DOMAIN_USERNAME?: string;
+  AUTH_DOMAIN_PASSWORD?: string;
 }
 
 // Loading process.env as ENV interface
@@ -49,13 +51,14 @@ const getConfig = (): ENV => {
       ? Number(process.env.SERVER_PORT)
       : undefined,
     SERVER_HOST: process.env.SERVER_HOST,
-    DATABASE_HOST: process.env.DATABASE_HOST,
-    DATABASE_USER: process.env.DATABASE_USER,
-    DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
-    DATABASE_NAME: process.env.DATABASE_NAME,
-    ADMIN_EMAIL_ADRESS: process.env.ADMIN_EMAIL_ADRESS,
-    AUTH_DOMAIN_USERNAME: process.env.AUTH_DOMAIN_USERNAME,
-    AUTH_DOMAIN_PASSWORD: process.env.AUTH_DOMAIN_PASSWORD,
+    DB_PORT: process.env.DB_PORT ? Number(process.env.DB_PORT) : undefined,
+    DB_HOST: process.env.DB_HOST ? process.env.DB_HOST : undefined,
+    DB_USER: process.env.DB_USER ? process.env.DB_USER : undefined,
+    DB_PASSWORD: process.env.DB_PASSWORD ? process.env.DB_PASSWORD : undefined,
+    DB_NAME: process.env.DB_NAME ? process.env.DB_NAME : undefined,
+    ADMIN_EMAIL_ADRESS: process.env.ADMIN_EMAIL_ADRESS ? process.env.ADMIN_EMAIL_ADRESS : undefined,
+    AUTH_DOMAIN_USERNAME: process.env.AUTH_DOMAIN_USERNAME ? process.env.AUTH_DOMAIN_USERNAME : undefined,
+    AUTH_DOMAIN_PASSWORD: process.env.AUTH_DOMAIN_PASSWORD ? process.env.AUTH_DOMAIN_PASSWORD : undefined,
   };
 };
 
@@ -67,7 +70,7 @@ const getConfig = (): ENV => {
 
 const getSafeConfig = (config: ENV): Config => {
   for (const [key, value] of Object.entries(config)) {
-    if (value === undefined) {
+    if (value === undefined && key !== "DB_HOST" && key !== "DB_USER" && key !== "DB_PASSWORD" && key !== "DB_NAME" && key !== "DB_PORT" && key !== "ADMIN_EMAIL_ADRESS" && key !== "AUTH_DOMAIN_USERNAME" && key !== "AUTH_DOMAIN_PASSWORD") {
       throw new Error(`Missing key ${key} in config.env`);
     }
   }
