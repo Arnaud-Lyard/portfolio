@@ -53,4 +53,4 @@ jobs:
       - name: Call VPS webhook to update production
         uses: wei/curl@master
         with:
-          args: https://ops.pierre.wns.wilders.dev/hooks/update-production
+          args: ${{ secrets.WEBHOOK_PRODUCTION_URL }}
