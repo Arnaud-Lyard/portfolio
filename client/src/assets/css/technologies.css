@@ -61,12 +61,12 @@
   height: 200px;
   transition: 0.3s;
   border-radius: 15px;
-  background: url("../images/javascript.png") no-repeat;
+  background: url("/images/javascript.png") no-repeat;
   background-size: contain;
   transition: 0.3s;
 }
 .technologies-container-gallery__image---javascript:hover {
-  background: url("../images/javascript-bw.png") no-repeat;
+  background: url("/images/javascript-bw.png") no-repeat;
   background-size: contain;
 }
 .technologies-container-gallery__image---typescript {
@@ -74,12 +74,12 @@
   height: 200px;
   transition: 0.3s;
   border-radius: 15px;
-  background: url("../images/typescript.png") no-repeat;
+  background: url("/images/typescript.png") no-repeat;
   background-size: contain;
   transition: 0.3s;
 }
 .technologies-container-gallery__image---typescript:hover {
-  background: url("../images/typescript-bw.png") no-repeat;
+  background: url("/images/typescript-bw.png") no-repeat;
   background-size: contain;
 }
 .technologies-container-gallery__image---node-js {
@@ -87,12 +87,12 @@
   height: 200px;
   transition: 0.3s;
   border-radius: 15px;
-  background: url("../images/node-js.png") no-repeat;
+  background: url("/images/node-js.png") no-repeat;
   background-size: contain;
   transition: 0.3s;
 }
 .technologies-container-gallery__image---node-js:hover {
-  background: url("../images/node-js-bw.png") no-repeat;
+  background: url("/images/node-js-bw.png") no-repeat;
   background-size: contain;
 }
 .technologies-container-gallery__image---nest-js {
@@ -100,12 +100,12 @@
   height: 200px;
   transition: 0.3s;
   border-radius: 15px;
-  background: url("../images/nest-js.png") no-repeat;
+  background: url("/images/nest-js.png") no-repeat;
   background-size: contain;
   transition: 0.3s;
 }
 .technologies-container-gallery__image---nest-js:hover {
-  background: url("../images/nest-js-bw.png") no-repeat;
+  background: url("/images/nest-js-bw.png") no-repeat;
   background-size: contain;
 }
 
@@ -114,12 +114,12 @@
   height: 200px;
   transition: 0.3s;
   border-radius: 15px;
-  background: url("../images/vue-js.png") no-repeat;
+  background: url("/images/vue-js.png") no-repeat;
   background-size: contain;
   transition: 0.3s;
 }
 .technologies-container-gallery__image---vue-js:hover {
-  background: url("../images/vue-js-bw.png") no-repeat;
+  background: url("/images/vue-js-bw.png") no-repeat;
   background-size: contain;
 }
 .technologies-container-gallery__image---graphql {
@@ -127,12 +127,12 @@
   height: 200px;
   transition: 0.3s;
   border-radius: 15px;
-  background: url("../images/graphql.png") no-repeat;
+  background: url("/images/graphql.png") no-repeat;
   background-size: contain;
   transition: 0.3s;
 }
 .technologies-container-gallery__image---graphql:hover {
-  background: url("../images/graphql-bw.png") no-repeat;
+  background: url("/images/graphql-bw.png") no-repeat;
   background-size: contain;
 }
 .technologies-container-gallery__image---react-js {
@@ -140,12 +140,12 @@
   height: 200px;
   transition: 0.3s;
   border-radius: 15px;
-  background: url("../images/react-js.png") no-repeat;
+  background: url("/images/react-js.png") no-repeat;
   background-size: contain;
   transition: 0.3s;
 }
 .technologies-container-gallery__image---react-js:hover {
-  background: url("../images/react-js-bw.png") no-repeat;
+  background: url("/images/react-js-bw.png") no-repeat;
   background-size: contain;
 }
 .technologies-container-gallery__image---docker {
@@ -153,12 +153,12 @@
   height: 200px;
   transition: 0.3s;
   border-radius: 15px;
-  background: url("../images/docker.png") no-repeat;
+  background: url("/images/docker.png") no-repeat;
   background-size: contain;
   transition: 0.3s;
 }
 .technologies-container-gallery__image---docker:hover {
-  background: url("../images/docker-bw.png") no-repeat;
+  background: url("/images/docker-bw.png") no-repeat;
   background-size: contain;
 }
 @media (max-width: 1250px) {
