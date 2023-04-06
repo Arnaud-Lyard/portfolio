@@ -7,8 +7,8 @@ export async function sendMail(data: IMailInput) {
   const { email, message, subject, name } = data;
 
   let transporter = nodemailer.createTransport({
-    host: "deutsch.o2switch.net",
-    port: 465,
+    host: config.AUTH_DOMAIN_HOST,
+    port: config.AUTH_DOMAIN_PORT,
     secure: true,
     auth: {
       user: config.AUTH_DOMAIN_USERNAME,
@@ -382,7 +382,7 @@ export async function sendMail(data: IMailInput) {
                                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                       <tbody>
                                         <tr>
-                                          <td> <a href="https://www.prochainweb.com" target="_blank">Go to site</a> </td>
+                                          <td> <a href="https://arnaudlyard.com" target="_blank">Go to site</a> </td>
                                         </tr>
                                       </tbody>
                                     </table>
