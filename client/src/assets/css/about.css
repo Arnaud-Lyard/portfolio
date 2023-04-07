@@ -172,6 +172,7 @@
 
 .about-container-experience-history__list {
   list-style: none;
+  padding: 10px;
 }
 .about-container-experience-history__list-item {
   position: relative;

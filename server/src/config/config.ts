@@ -22,6 +22,8 @@ interface ENV {
   ADMIN_EMAIL_ADRESS: string | undefined;
   AUTH_DOMAIN_USERNAME: string | undefined;
   AUTH_DOMAIN_PASSWORD: string | undefined;
+  AUTH_DOMAIN_HOST: string | undefined;
+  AUTH_DOMAIN_PORT: number | undefined;
 }
 
 interface Config {
@@ -38,6 +40,9 @@ interface Config {
   ADMIN_EMAIL_ADRESS?: string;
   AUTH_DOMAIN_USERNAME?: string;
   AUTH_DOMAIN_PASSWORD?: string;
+  AUTH_DOMAIN_HOST?: string;
+  AUTH_DOMAIN_PORT?: number;
+
 }
 
 // Loading process.env as ENV interface
@@ -59,6 +64,8 @@ const getConfig = (): ENV => {
     ADMIN_EMAIL_ADRESS: process.env.ADMIN_EMAIL_ADRESS ? process.env.ADMIN_EMAIL_ADRESS : undefined,
     AUTH_DOMAIN_USERNAME: process.env.AUTH_DOMAIN_USERNAME ? process.env.AUTH_DOMAIN_USERNAME : undefined,
     AUTH_DOMAIN_PASSWORD: process.env.AUTH_DOMAIN_PASSWORD ? process.env.AUTH_DOMAIN_PASSWORD : undefined,
+    AUTH_DOMAIN_HOST: process.env.AUTH_DOMAIN_HOST ? process.env.AUTH_DOMAIN_HOST : undefined,
+    AUTH_DOMAIN_PORT: process.env.AUTH_DOMAIN_PORT ? Number(process.env.AUTH_DOMAIN_PORT) : undefined,
   };
 };
 
@@ -70,7 +77,7 @@ const getConfig = (): ENV => {
 
 const getSafeConfig = (config: ENV): Config => {
   for (const [key, value] of Object.entries(config)) {
-    if (value === undefined && key !== "DB_HOST" && key !== "DB_USER" && key !== "DB_PASSWORD" && key !== "DB_NAME" && key !== "DB_PORT" && key !== "ADMIN_EMAIL_ADRESS" && key !== "AUTH_DOMAIN_USERNAME" && key !== "AUTH_DOMAIN_PASSWORD") {
+    if (value === undefined && key !== "DB_HOST" && key !== "DB_USER" && key !== "DB_PASSWORD" && key !== "DB_NAME" && key !== "DB_PORT" && key !== "ADMIN_EMAIL_ADRESS" && key !== "AUTH_DOMAIN_USERNAME" && key !== "AUTH_DOMAIN_PASSWORD" && key !== "AUTH_DOMAIN_HOST" && key !== "AUTH_DOMAIN_PORT") {
       throw new Error(`Missing key ${key} in config.env`);
     }
   }

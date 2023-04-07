@@ -8,15 +8,8 @@
     <div class="portfolio-container-gallery">
       <div class="portfolio-container-gallery__wrapper">
         <div class="portfolio-container-gallery__element">
-          <img
-            class="portfolio-container-gallery__image"
-            :src="portfolio[0].image"
-            alt=""
-          />
-          <div
-            @click="showModal(0)"
-            class="portfolio-container-gallery__image---hover"
-          >
+          <img class="portfolio-container-gallery__image" :src="portfolio[0].image" alt="" />
+          <div @click="showModal(0)" class="portfolio-container-gallery__image---hover">
             <span class="portfolio-container-gallery__image-title">{{
               portfolio[0].project
             }}</span>
@@ -25,15 +18,8 @@
       </div>
       <div class="portfolio-container-gallery__wrapper">
         <div class="portfolio-container-gallery__element">
-          <img
-            class="portfolio-container-gallery__image"
-            :src="portfolio[1].image"
-            alt=""
-          />
-          <div
-            @click="showModal(1)"
-            class="portfolio-container-gallery__image---hover"
-          >
+          <img class="portfolio-container-gallery__image" :src="portfolio[1].image" alt="" />
+          <div @click="showModal(1)" class="portfolio-container-gallery__image---hover">
             <span class="portfolio-container-gallery__image-title">{{
               portfolio[1].project
             }}</span>
@@ -42,15 +28,8 @@
       </div>
       <div class="portfolio-container-gallery__wrapper">
         <div class="portfolio-container-gallery__element">
-          <img
-            class="portfolio-container-gallery__image"
-            :src="portfolio[2].image"
-            alt=""
-          />
-          <div
-            @click="showModal(2)"
-            class="portfolio-container-gallery__image---hover"
-          >
+          <img class="portfolio-container-gallery__image" :src="portfolio[2].image" alt="" />
+          <div @click="showModal(2)" class="portfolio-container-gallery__image---hover">
             <span class="portfolio-container-gallery__image-title">{{
               portfolio[2].project
             }}</span>
@@ -82,7 +61,7 @@ const portfolio = reactive<
     client: "Michel",
     langages: "Wordpress",
     website: "https://velosbuis.com",
-    image: "./src/assets/images/velosbuis.jpg",
+    image: "/images/velosbuis.jpg",
   },
   {
     id: 1,
@@ -90,7 +69,7 @@ const portfolio = reactive<
     client: "Marie Pierre et Frédéric",
     langages: "Wordpress",
     website: "https://gitedesechudes.fr/",
-    image: "./src/assets/images/gitedesechudes.jpg",
+    image: "/images/gitedesechudes.jpg",
   },
   {
     id: 2,
@@ -98,7 +77,7 @@ const portfolio = reactive<
     client: "Arnaud",
     langages: "Vue 3, NodeJS",
     website: "https://arnaud-lyard.com/",
-    image: "./src/assets/images/portfolio.jpg",
+    image: "/images/portfolio.jpg",
   },
 ]);
 const isVisible = ref<boolean>(false);

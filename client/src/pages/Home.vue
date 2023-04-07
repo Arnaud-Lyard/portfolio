@@ -5,16 +5,10 @@
       <div class="home-container__background"></div>
       <div class="home-container__presentation">
         <div class="home-container__details">
-          <img
-            src="../assets/images/Arnaud.jpg"
-            alt="Arnaud LYARD"
-            class="home-container__details-img"
-          />
+          <img src="/images/Arnaud.jpg" alt="Arnaud LYARD" class="home-container__details-img" />
           <h1 class="home-container__details-title">
             I'm Arnaud LYARD.<br />
-            <span class="home-container__details-subtitle"
-              >full stack developper</span
-            >
+            <span class="home-container__details-subtitle">full stack developper</span>
           </h1>
           <p class="home-container__details-description">
             I'm a french based full stack developper, I'm passionate about web
@@ -22,12 +16,9 @@
           </p>
           <router-link to="/about">
             <button class="home-container__details-button">
-              <span class="home-container__details-button-text"
-                >More about me</span
-              >
-              <span class="home-container__details-button-icon"
-                ><font-awesome-icon icon="fa-solid fa-arrow-right"
-              /></span>
+              <span class="home-container__details-button-text">More about me</span>
+              <span class="home-container__details-button-icon"><font-awesome-icon
+                  icon="fa-solid fa-arrow-right" /></span>
             </button>
           </router-link>
         </div>
