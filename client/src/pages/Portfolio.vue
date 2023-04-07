@@ -76,7 +76,7 @@ const portfolio = reactive<
     project: "Portfolio",
     client: "Arnaud",
     langages: "Vue 3, NodeJS",
-    website: "https://arnaud-lyard.com/",
+    website: "https://arnaudlyard.com/",
     image: "/images/portfolio.jpg",
   },
 ]);

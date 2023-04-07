@@ -5,7 +5,7 @@
       <div class="home-container__background"></div>
       <div class="home-container__presentation">
         <div class="home-container__details">
-          <img src="/images/Arnaud.jpg" alt="Arnaud LYARD" class="home-container__details-img" />
+          <img src="/images/Arnaud-mobile.jpg" alt="Arnaud LYARD" class="home-container__details-img" />
           <h1 class="home-container__details-title">
             I'm Arnaud LYARD.<br />
             <span class="home-container__details-subtitle">full stack developper</span>
