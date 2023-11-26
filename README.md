@@ -1,10 +1,10 @@
 # Portfolio d'Arnaud Lyard
 
-Bienvenue sur mon portfolio ! 🚀
+Welcome to my portfolio! 🚀
 
 ## Installation
 
-Pour déployer localement le portfolio, suivez ces étapes :
+To deploy the portfolio, follow these steps :
 
 ### Development environment :
 ```bash
