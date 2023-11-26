@@ -45,7 +45,7 @@ I obtained my professional title as a web and mobile web developer at Onlineform
 ### Projects:
 - [Vélos Buis](https://velosbuis.com)
 - [Gîte des Echudes](https://gitedesechudes.fr)
-- [Prochainweb](https://prochainweb.com/)
+- [Prochainweb](https://www.prochainweb.com/)
 
 ### Contact Form
 You can contact me using the form on the site or by visiting [my LinkedIn profile](https://www.linkedin.com/in/arnaud-lyard/).
