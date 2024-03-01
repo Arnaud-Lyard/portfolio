@@ -73,12 +73,12 @@ const portfolio = reactive<
   },
   {
     id: 2,
-    project: "Portfolio",
+    project: "Relaxing hippoquests",
     client: "Arnaud",
-    langages: "Vue 3, NodeJS",
-    website: "https://arnaudlyard.com/",
-    image: "/images/portfolio.jpg",
-  },
+    langages: "Typescript",
+    website: "https://relaxing-hippoquests.com/",
+    image: "/images/relaxing-hippoquests.jpeg",
+  }
 ]);
 const isVisible = ref<boolean>(false);
 const stateModal = ref<{

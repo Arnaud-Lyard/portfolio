@@ -1,8 +1,8 @@
 <template>
   <header class="header">
     <ul class="header__navbar">
-      <router-link to="/"
-        ><li class="header__list-item">
+      <router-link to="/">
+        <li class="header__list-item">
           <button href="#" class="header__button">
             <i class="header__list-icon">
               <font-awesome-icon icon="fa-solid fa-home" />
@@ -48,26 +48,6 @@
               <font-awesome-icon icon="fa-solid fa-envelope" />
             </i>
             <h2 class="header__list-title">Contact</h2>
-          </button>
-        </li>
-      </router-link>
-      <router-link v-if="!userStore.getUserEmail" to="/login">
-        <li class="header__list-item">
-          <button href="#" class="header__button">
-            <i class="header__list-icon">
-              <font-awesome-icon icon="fa-solid fa-right-to-bracket" />
-            </i>
-            <h2 class="header__list-title">Login</h2>
-          </button>
-        </li>
-      </router-link>
-      <router-link v-else to="/dashboard">
-        <li class="header__list-item">
-          <button href="#" class="header__button">
-            <i class="header__list-icon">
-              <font-awesome-icon icon="fa-solid fa-lock" />
-            </i>
-            <h2 class="header__list-title">Dashboard</h2>
           </button>
         </li>
       </router-link>
