@@ -1,4 +1,4 @@
-# Portfolio d'Arnaud Lyard
+# Portfolio
 
 Welcome to my portfolio! 🚀
 
@@ -43,10 +43,9 @@ I obtained my professional title as a web and mobile web developer at Onlineform
 - Wordpress
   
 ### Projects:
-- [Portfolio](https://arnaudlyard.com/)
 - [Vélos Buis](https://velosbuis.com)
 - [Gîte des Echudes](https://gitedesechudes.fr)
-- [Prochainweb](https://www.prochainweb.com/)
+- [Prochainweb](https://prochainweb.com/)
 
-### Contact Form
-You can contact me using the form on the site or by visiting [my LinkedIn profile](https://www.linkedin.com/in/arnaud-lyard/).
+### Contact
+You can contact me visiting [my LinkedIn profile](https://www.linkedin.com/in/arnaud-lyard/).
